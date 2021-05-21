@@ -1,0 +1,316 @@
+<!doctype html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name = "viewport" content = "width = device - width, initial-scale = 1.0, shrink-to-fit = no">
+        <style>
+            html {
+                margin: 0px;
+                height: 100%;
+                width: 100%;
+            }
+            body {
+                background-image: -webkit-linear-gradient(45deg, #ccdcdd 30%, #64817d 60%, #1f4034 100%);
+                background-image: -moz-linear-gradient(45deg, #ccdcdd 30%, #64817d 60%, #1f4034 100%);
+                background-image: -o-linear-gradient(45deg, #ccdcdd 30%, #64817d 60%, #1f4034 100%);
+                background-image: linear-gradient(45deg, #ccdcdd 30%, #64817d 60%, #1f4034 100%);
+                background-repeat: no-repeat;
+                font-size: 30px;
+                margin: 0px;
+                max-height: 100%;
+                width: 100%;
+            }
+            .question {
+                background-color: #fca26e;
+                padding: 20px;
+                margin-top: 150px;
+                margin-left: 150px;
+                height: 230px;
+                width: 400px;
+                border: #f57510 1px solid;
+                border-radius: 5%;
+            }
+            .answer {
+                display: -webkit-flex;
+                display: flex;
+                flex-direction: row;
+            }
+            .button {   
+                background-color: #64817d;
+                background-image: -webkit-linear-gradient(top, #ccdcdd 0%, #64817d 50%, #1f4034 50%, #14281f 100%);
+                background-image: -moz-linear-gradient(top, #ccdcdd 0%, #64817d 50%, #1f4034 50%, #14281f 100%);
+                background-image: -o-linear-gradient(top, #ccdcdd 0%, #64817d 50%, #1f4034 50%, #14281f 100%); 
+                background-image: linear-gradient(top, #ccdcdd 0%, #64817d 50%, #1f4034 50%, #14281f 100%); 
+                border: 1px solid #14281f;
+                box-shadow: inset 0px 0px 0px 1px #1f4034, 0 1px 3px #333333;
+                text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.8);
+                border-radius: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin: 40px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <script>
+         
+            let olga = {
+                name: 'Olga',
+                man: false,
+                children2: true,
+                august: false,
+                copywriter: true,
+                brighthair: true,
+                englishteacher: false,
+                sport: false
+            };
+
+            let sveta = {
+                name: 'Sveta',
+                man: false,
+                children2: true,
+                august: false,
+                copywriter: false,
+                brighthair: true,
+                englishteacher: false,
+                sport: false
+            };
+
+            let glafira = {
+                name: 'Glafira',
+                man: false,
+                children2: false,
+                august: false,
+                copywriter: true,
+                brighthair: true,
+                englishteacher: false,
+                sport: true
+            };
+
+            let katia = {
+                name: 'Katia',
+                man: false,
+                children2: false,
+                august: false,
+                copywriter: true,
+                brighthair: false,
+                englishteacher: false,
+                sport: false
+            };
+
+            let alfmindal = {
+                name: 'Alexey Alfmindal',
+                man: true,
+                children2: false,
+                august: true,
+                copywriter: false,
+                brighthair: false,
+                englishteacher: true,
+                sport: true
+            };
+
+            let andrey = {
+                name: 'Andrey',
+                man: true,
+                children2: false,
+                august: true,
+                copywriter: false,
+                brighthair: false,
+                englishteacher: false,
+                sport: true
+            };
+
+            let damnedgeek = {
+                name: 'Alexey Damnedgeek',
+                man: true,
+                children2: false,
+                august: false,
+                copywriter: false,
+                brighthair: false,
+                englishteacher: false,
+                sport: true
+            };
+
+            let egor = {
+                name: 'Egor',
+                man: true,
+                children2: false,
+                august: false,
+                copywriter: false,
+                brighthair: false,
+                englishteacher: false,
+                sport: false
+            };
+
+            //Создаём див с текстом: "Этот человек мужчина?" - и кнопками "Да", "Нет"
+           /* let resultboys = [];
+            let resultgirls = [];*/
+            let div = document.createElement('div');
+            let div2 = document.createElement('div');
+            let divIn = document.createElement('div');
+            let buttonYes = document.createElement('div');
+            let buttonNo = document.createElement('div');
+
+            div.className = "question";
+            div2.className = "answer";
+            buttonYes.className = "button";
+            buttonNo.className = "button";
+
+            divIn.innerHTML = "Этот человек мужчина?";
+            buttonYes.innerHTML = "Yes";
+            buttonNo.innerHTML = "No";
+
+            document.body.append(div);
+            div.append(divIn);
+            div.append(div2);
+            div2.append(buttonYes);
+            div2.append(buttonNo);
+
+            //Вопросы про мужчину
+                buttonYes.addEventListener('click', function(){
+                    divIn.innerHTML = "Он родился в августе?";
+                    let resultboys = [alfmindal, andrey, damnedgeek, egor];
+
+                    buttonYes.addEventListener('click', function(){
+                        divIn.innerHTML = "Он репетитор по английскому языку?";
+
+                        for(let i = 0; i < resultboys.length; i += 1){
+                            if (resultboys[i].august == false) resultboys.splice(i, 1);
+                        }
+                        buttonYes.addEventListener('click', function(){
+
+                            for(let i = 0; i < resultboys.length; i += 1){
+                                if (resultboys[i].englishteacher == false) resultboys.splice(i, 1);
+                            }
+
+                            divIn.innerHTML = resultboys[0].name;
+                        });
+
+                        buttonNo.addEventListener('click', function(){
+
+                            for(let i = 0; i < resultboys.length; i += 1){
+                                if (resultboys[i].englishteacher == true) resultboys.splice(i, 1);
+                            }
+
+                            divIn.innerHTML = resultboys[0].name;
+                        }); 
+                    });
+
+                    buttonNo.addEventListener('click', function(){
+                        divIn.innerHTML = "Он катается на самокате?";
+
+                        for(let i = 0; i < resultboys.length; i += 1){
+                            if (resultboys[i].august == true) resultboys.splice(i, 1);
+                        }
+                        
+                        buttonYes.addEventListener('click', function(){
+
+                            for(let i = 0; i < resultboys.length; i += 1){
+                                if (resultboys[i].sport == false) resultboys.splice(i, 1);
+                            }
+
+                            divIn.innerHTML = resultboys[0].name;
+                        });
+
+                        buttonNo.addEventListener('click', function(){
+
+                            for(let i = 0; i < resultboys.length; i += 1){
+                                if (resultboys[i].englishteacher == true) resultboys.splice(i, 1);
+                            }
+
+                            divIn.innerHTML = resultboys[0].name;
+                        }); 
+                    });
+                });
+
+                //Вопросы про женщину 
+                buttonNo.addEventListener('click', function(){
+                    divIn.innerHTML = "У неё двое детей?";
+                    let resultgirls = [olga, sveta, glafira, katia];
+                    console.log(resultgirls);
+                    buttonYes.addEventListener('click', function(){
+
+                        for(let i = 0; i < resultgirls.length; i += 1){
+                            if (resultgirls[i].children2 == false) resultgirls.splice(i, 1);
+                        }
+                        console.log(resultgirls);
+                        divIn.innerHTML = "Она копирайтер?";
+
+                        buttonYes.addEventListener('click', function(){
+
+                            for(let i = 0; i < resultgirls.length; i += 1){
+                                if (resultgirls[i].copywriter == false) resultgirls.splice(i, 1);
+                            }
+                            console.log(resultgirls);
+                            divIn.innerHTML = resultgirls[0].name;
+                        });
+
+                        buttonNo.addEventListener('click', function(){
+
+                            for(let i = 0; i < resultgirls.length; i += 1){
+                                if (resultgirls[i].copywriter == true) resultgirls.splice(i, 1);
+                            }
+                            console.log(resultgirls);
+                            divIn.innerHTML = resultgirls[0].name;
+                        }); 
+
+                    });
+
+                    buttonNo.addEventListener('click', function(){
+
+                        for(let i = 0; i < resultgirls.length; i += 1){
+                            if (resultgirls[i].children2 == true) resultgirls.splice(i, 1);
+                        }
+                        console.log(resultgirls);
+                        divIn.innerHTML = "У неё яркие волосы?";
+
+                        buttonYes.addEventListener('click', function(){
+
+                            for(let i = 0; i < resultgirls.length; i += 1){
+                                if (resultgirls[i].brighthair == false) resultgirls.splice(i, 1);
+                            }
+                            console.log(resultgirls);
+                            divIn.innerHTML = resultgirls[0].name;
+                        });
+
+                        buttonNo.addEventListener('click', function(){
+
+                            for(let i = 0; i < resultgirls.length; i += 1){
+                                if (resultgirls[i].brighthair == true) resultgirls.splice(i, 1);
+                            }
+                            console.log(resultgirls);
+                            divIn.innerHTML = resultgirls[0].name;
+                        });
+
+                    });
+                }); 
+                
+        </script>
+
+    </body>
+
+    <!--            buttonYes.addEventListener('click', function(){
+
+                        for(let i = 0; i < result.length; i += 1){
+                            if (result[i].brighthair == false) result.splice(i, 1);
+                        }
+
+                         divIn.innerHTML = result[0].name;
+                    });
+
+                    buttonNo.addEventListener('click', function(){
+
+                        for(let i = 0; i < result.length; i += 1){
+                            if (result[i].brighthair == true) result.splice(i, 1);
+                        }
+
+                        divIn.innerHTML = result[0].name;
+                    });  
+        -->
